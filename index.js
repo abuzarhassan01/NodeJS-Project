@@ -1,19 +1,12 @@
-const http = require("http");
+const express = require("express");
+const app = express();
 
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-console.log("Starting server...");
-
-const server = http.createServer((req, res) => {
-  if (req.url === "/health") {
-    res.writeHead(200, { "Content-Type": "application/json" });
-    res.end(JSON.stringify({ status: "OK" }));
-  } else {
-    res.writeHead(200, { "Content-Type": "text/plain" });
-    res.end("Node.js CI/CD Demo App is running");
-  }
+app.get("/", (req, res) => {
+  res.send("🚀 Node.js CI/CD App Deployed Successfully!");
 });
 
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
