@@ -16,9 +16,11 @@ const PORT = process.env.PORT || 10000;
 
 app.get("/", (req, res) => {
   res.render("index", {
-    deployedAt: new Date().toISOString()
+    debug: "EJS render working",
+    time: new Date().toISOString()
   });
 });
+
 
 // Contact form handler
 app.post("/contact", (req, res) => {
