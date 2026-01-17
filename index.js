@@ -10,12 +10,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 10000;
+
 
 
 app.get("/", (req, res) => {
-  res.render('index');
+  res.render("index", {
+    deployedAt: new Date().toISOString()
+  });
 });
+
 // Contact form handler
 app.post("/contact", (req, res) => {
     const { name, email, subject, message } = req.body;
